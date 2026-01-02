@@ -1,20 +1,25 @@
 /* =====================================================
-   CFServices · Core
-   Centrale client-side logica
+   CFServices · Core Runtime
+   Canonieke Front-End Logica
    ===================================================== */
 
 window.CFS = window.CFS || {};
 
-/* -----------------------------------------
-   Basis status (future-proof)
------------------------------------------ */
-window.CFS.state = {
-  environment: "public",
-  version: "1.0.0",
-  initialized: true
-};
+/* -------------------------------
+   Navigatie · Terugknop
+-------------------------------- */
 
-console.info("[CFServices] Core geladen:", window.CFS.state);
+document.addEventListener("DOMContentLoaded", () => {
+  const navBack = document.querySelector(".nav-back");
+
+  if (navBack) {
+    navBack.innerHTML = `
+      <a href="/aipartneragents/index.html" class="nav-back-link">
+        ← Terug naar Agents & Partners
+      </a>
+    `;
+  }
+});
 
 /* =====================================================
    CFServices · AI-Begeleiding
