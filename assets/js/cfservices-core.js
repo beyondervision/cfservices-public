@@ -1,13 +1,14 @@
 /* =====================================================
    CFServices · Core Runtime
    Canonieke Front-End Logica
+   Z.A.L. · Active Guidance Enabled
    ===================================================== */
 
 window.CFS = window.CFS || {};
 
-/* -------------------------------
-   Navigatie · Terugknop
--------------------------------- */
+/* -----------------------------------------------------
+   Navigatie · Canonieke Terugknop
+   ----------------------------------------------------- */
 
 document.addEventListener("DOMContentLoaded", () => {
   const navBack = document.querySelector(".nav-back");
@@ -22,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* =====================================================
-   CFServices · AI-Begeleiding
+   CFServices · AI-Begeleiding (Z.A.L.)
    ===================================================== */
 
 window.CFS.aiGuidance = {
@@ -45,3 +46,9 @@ window.CFS.aiGuidance = {
     );
   }
 };
+
+/* -----------------------------------------------------
+   Z.A.L. · Standaard Activatie
+   ----------------------------------------------------- */
+
+CFS.aiGuidance.activate("basic");
