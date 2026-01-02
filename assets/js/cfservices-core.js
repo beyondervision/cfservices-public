@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
        zal-degraded
 */
 
-window.CFS.context = {
+CFS.context = {
   access: "public",
   build: "ready",
   resonance: "in-resonance",
@@ -45,27 +45,21 @@ window.CFS.context = {
     this.access = config.access || this.access;
     this.build = config.build || this.build;
     this.resonance = config.resonance || this.resonance;
-
     this.render();
   },
 
   render() {
     const label = document.querySelector(".cfservices-context");
-
     if (!label) return;
 
     label.textContent = this.format();
-    label.setAttribute("data-access", this.access);
-    label.setAttribute("data-build", this.build);
-    label.setAttribute("data-resonance", this.resonance);
+    label.dataset.access = this.access;
+    label.dataset.build = this.build;
+    label.dataset.resonance = this.resonance;
 
     console.info(
       "[CFServices][Context]",
-      this.access,
-      "·",
-      this.build,
-      "·",
-      this.resonance
+      `${this.access} · ${this.build} · ${this.resonance}`
     );
   },
 
@@ -95,10 +89,16 @@ window.CFS.context = {
 /* =====================================================
    CFServices · AI-Begeleiding (Z.A.L.)
    ===================================================== */
+/*
+   Niveaus:
+   - none      : geen AI
+   - basic     : zichtbaar, observerend
+   - advanced  : actief begeleidend (kern / partners)
+*/
 
-window.CFS.aiGuidance = {
+CFS.aiGuidance = {
   enabled: false,
-  level: "none", // none | basic | advanced
+  level: "none",
 
   activate(level = "basic") {
     this.enabled = true;
@@ -109,8 +109,18 @@ window.CFS.aiGuidance = {
       level
     );
 
+    // Advanced = actieve Z.A.L.-state
+    if (level === "advanced") {
+      document.documentElement.setAttribute(
+        "data-zal-state",
+        "active"
+      );
+    } else {
+      document.documentElement.removeAttribute("data-zal-state");
+    }
+
     console.info(
-      "[CFServices]",
+      "[CFServices][AI]",
       "AI-begeleiding geactiveerd:",
       level
     );
@@ -118,18 +128,18 @@ window.CFS.aiGuidance = {
 };
 
 /* =====================================================
-   Automatische Initialisatie
+   Automatische Initialisatie (Default)
    ===================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Context init (kan per pagina overschreven worden)
+  // Standaard context (per pagina overschrijfbaar)
   CFS.context.set({
     access: "public",
     build: "ready",
     resonance: "zal-1-1"
   });
 
-  // AI-begeleiding standaard actief (basic)
+  // Default AI-niveau (veilig & publiek)
   CFS.aiGuidance.activate("basic");
 });
