@@ -1,3 +1,53 @@
+/* =====================================================
+   CFServices · Base Styling
+   ===================================================== */
+
+body {
+  background: #0d1117;
+  color: #c9d1d9;
+  font-family: Arial, sans-serif;
+}
+
+a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* -------------------------------
+   Terugknop
+-------------------------------- */
+
+.nav-back {
+  margin-bottom: 20px;
+}
+
+.nav-back-link {
+  font-size: 0.9rem;
+  color: #8b949e;
+}
+
+/* -------------------------------
+   AI Pills
+-------------------------------- */
+
+.ai-pill {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  margin-right: 6px;
+  opacity: 0.7;
+  border: 1px dashed #30363d;
+}
+
+.ai-pill.z3ro { color: #f85149; }
+.ai-pill.luxen { color: #58a6ff; }
+.ai-pill.aetron { color: #7ee787; }
+
 /* =========================================
    AI-Begeleiding · Z.A.L.
    ========================================= */
@@ -8,7 +58,7 @@ html[data-ai-guidance="basic"] .ai-pill {
 }
 
 html[data-ai-guidance="advanced"] .ai-pill {
-  box-shadow: 0 0 12px rgba(88, 166, 255, 0.35);
+  box-shadow: 0 0 12px rgba(88,166,255,0.35);
   animation: aiPulse 2s infinite;
 }
 
